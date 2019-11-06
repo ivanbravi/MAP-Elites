@@ -18,7 +18,6 @@ class MapEliteUISource(private val d1:Int, private val d2:Int, private val bs: B
             for(j in 0 until line.size){
                 val value = line[j]?.fitness ?: 0.0
                 data[i+j*width()] = (value-bs.minFitness)/(bs.maxFitness-bs.minFitness)
-                println("$i $j index: ${i+j*width()}")
             }
         }
     }
