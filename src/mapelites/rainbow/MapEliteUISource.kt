@@ -11,13 +11,14 @@ class MapEliteUISource(private val d1:Int, private val d2:Int, private val bs: B
     fun height():Int = bs.dimensions[d2]
 
     fun update(){
-        val newData = bs.collapse(0,1)
+        val newData = bs.collapse(d1,d2)
 
-        for(j in 0 until newData.size){
-            val line = newData[j]
-            for(i in 0 until line.size){
-                val value = line[i]?.fitness ?: 0.0
+        for(i in 0 until newData.size){
+            val line = newData[i]
+            for(j in 0 until line.size){
+                val value = line[j]?.fitness ?: 0.0
                 data[i+j*width()] = (value-bs.minFitness)/(bs.maxFitness-bs.minFitness)
+                println("$i $j index: ${i+j*width()}")
             }
         }
     }
