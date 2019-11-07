@@ -2,12 +2,12 @@ package tests.sum
 
 import mapelites.Search
 import mapelites.core.BehaviourSpace
-import mapelites.core.SimpleSummary
+import mapelites.core.summary.SimpleSummary
 import mapelites.core.binning.LinearBinning
 import mapelites.core.selection.RandomSelection
+import mapelites.core.summary.SummariseSearch
 import mapelites.rainbow.MapEliteUISource
 import ui.ConsoleUI.UI
-import ui.elements.DataSource
 import ui.elements.RectSourced
 
 class TestSum {
@@ -26,14 +26,14 @@ class TestSum {
             val adapter = MapEliteUISource(1, 0, s.bs)
             UI.sourcedRect(0, 0, adapter.width(), adapter.height(), adapter)
             val summaryRect = UI.rect(0, adapter.height()+1,50,50, "")
-            val summary = SimpleSummary()
+            val summary = SummariseSearch(SimpleSummary())
             RectSourced.defaultSymbol = "•"
             RectSourced.maxSymbol = "*"
 
             while (!s.searchIsOver()) {
                 s.interactiveSearch(15)
                 adapter.update()
-                summaryRect.update(summary.summarise(s.bs))
+                summaryRect.update(summary.summarise(s))
                 UI.draw()
             }
 

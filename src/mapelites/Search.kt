@@ -9,9 +9,12 @@ class Search(private val ss: SolutionSpace,
              val bs: BehaviourSpace,
              private val bf: BehavioursFunction) {
 
-    private var iteration:Int=0
-    private var iterations:Int=0
-    private var bootIterations:Int=0
+    var iteration:Int=0
+        private set
+    var iterations:Int=0
+        private set
+    var bootIterations:Int=0
+        private set
 
     var selection:SelectionStrategy = RandomSelection()
 

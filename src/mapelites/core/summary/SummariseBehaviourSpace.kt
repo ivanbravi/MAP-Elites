@@ -1,4 +1,4 @@
-package mapelites.interfaces
+package mapelites.core.summary
 
 import mapelites.core.BehaviourSpace
 
