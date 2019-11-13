@@ -8,6 +8,7 @@ import mapelites.core.selection.RandomSelection
 import mapelites.core.summary.SummariseSearch
 import mapelites.rainbow.MapEliteUISource
 import ui.ConsoleUI.UI
+import ui.elements.LabelledDataSource
 import ui.elements.RectSourced
 
 class TestSum {
@@ -20,14 +21,18 @@ class TestSum {
                 BehaviourSpace(arrayOf(LinearBinning(0, max, 5), LinearBinning(0, max, 30))),
                 SumBehaviours(max)
             )
+
+            s.bs.names = arrayOf("count same","avg")
+
             s.selection = RandomSelection()
             s.startInteractiveSearch(3000, 300)
 
             val adapter = MapEliteUISource(1, 0, s.bs)
-            UI.sourcedRect(0, 0, adapter.width(), adapter.height(), adapter)
-            val summaryRect = UI.rect(0, adapter.height()+1,50,50, "")
+            val graph = UI.sourcedGraph(0, 0, adapter.width(), adapter.height(), adapter)
+            graph.alignCenter()
+            val summaryRect = UI.rect(0, adapter.height()+7,50,20, "")
             val summary = SummariseSearch(SimpleSummary())
-            RectSourced.defaultSymbol = "•"
+            RectSourced.defaultSymbol = " "
             RectSourced.maxSymbol = "*"
 
             while (!s.searchIsOver()) {

@@ -67,13 +67,13 @@ class BehaviourSpace(cbins:Array<Binning>){
         val grid= Array(d1Size){arrayOfNulls<BehaviourSpacePoint>(d2Size)}
 
         for( point in space.keys){
-            val el=space[point]
+            val el= space[point]
             val x = point[d1]
             val y = point[d2]
 
             if(grid[x][y]==null){
                 grid[x][y] = el
-            }else if(grid[x][y]!!.fitness>el!!.fitness){
+            }else if(grid[x][y]!!.fitness > el!!.fitness){
                 grid[x][y] = el
             }
         }
