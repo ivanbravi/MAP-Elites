@@ -73,7 +73,7 @@ class BehaviourSpace(cbins:Array<Binning>){
 
             if(grid[x][y]==null){
                 grid[x][y] = el
-            }else if(grid[x][y]!!.fitness > el!!.fitness){
+            }else if(grid[x][y]!!.fitness < el!!.fitness){
                 grid[x][y] = el
             }
         }
