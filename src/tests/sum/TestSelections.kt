@@ -12,7 +12,7 @@ fun main() {
     val s = Search(
         SumSpace(5, 5),
         SumFitness(),
-        BehaviourSpace(arrayOf(LinearBinning(0, 5, 5), LinearBinning(0, 5, 10))),
+        BehaviourSpace(arrayOf(LinearBinning(0.0, 5.0, 5), LinearBinning(0.0, 5.0, 10))),
         SumBehaviours(5)
     )
 

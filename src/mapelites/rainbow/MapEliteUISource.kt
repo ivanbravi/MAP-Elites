@@ -1,7 +1,6 @@
 package mapelites.rainbow
 
 import mapelites.core.BehaviourSpace
-import ui.elements.DataSource
 import ui.elements.LabelledDataSource
 
 class MapEliteUISource(private val d1:Int, private val d2:Int, private val bs: BehaviourSpace): LabelledDataSource {
@@ -20,6 +19,22 @@ class MapEliteUISource(private val d1:Int, private val d2:Int, private val bs: B
                 data[i+j*width()] = value
             }
         }
+    }
+
+    override fun minX(): String {
+        return bs.bins[d1].min().toString()
+    }
+
+    override fun minY(): String {
+        return bs.bins[d2].min().toString()
+    }
+
+    override fun maxX(): String {
+        return bs.bins[d1].max().toString()
+    }
+
+    override fun maxY(): String {
+        return bs.bins[d2].max().toString()
     }
 
     override fun xLabel(): String = bs.names?.get(d1) ?: ""

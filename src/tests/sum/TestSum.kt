@@ -18,7 +18,7 @@ class TestSum {
             val s = Search(
                 SumSpace(5, max),
                 SumFitnessTrap(max),
-                BehaviourSpace(arrayOf(LinearBinning(0, max, 5), LinearBinning(0, max, 30))),
+                BehaviourSpace(arrayOf(LinearBinning(0.0, max.toDouble(), 5), LinearBinning(0.0, max.toDouble(), 30))),
                 SumBehaviours(max)
             )
 

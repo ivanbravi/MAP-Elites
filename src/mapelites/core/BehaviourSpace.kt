@@ -10,7 +10,7 @@ class BehaviourSpace(cbins:Array<Binning>){
     private val dimensionality:Int=cbins.size
     val dimensions:IntArray= this.computeDimensions(bins = cbins)
 
-    private val bins:Array<Binning> = cbins.clone()
+    val bins:Array<Binning> = cbins.clone()
     private val space = HashMap<CHIntArray,BehaviourSpacePoint>()
 
     var maxFitness=Double.MIN_VALUE

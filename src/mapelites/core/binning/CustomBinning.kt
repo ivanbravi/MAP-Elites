@@ -1,7 +1,6 @@
 package mapelites.core.binning
 
 class CustomBinning (private val limits:DoubleArray):Binning{
-
     override fun bin(v: Double): Int {
         if(v<limits.first())
             return 0;
@@ -16,5 +15,9 @@ class CustomBinning (private val limits:DoubleArray):Binning{
     override fun binCount():Int{
         return limits.size+1
     }
+
+    override fun min(): Double = limits.first()
+
+    override fun max(): Double = limits.last()
 
 }

@@ -1,7 +1,6 @@
 package mapelites.core.binning
 
-class LinearBinning(private val min:Int, private val max:Int, private val n:Int) : Binning{
-
+class LinearBinning(private val min:Double, private val max:Double, private val n:Int) : Binning{
     private var pad:Boolean=false;
 
     fun pad():Binning{ pad = true; return this;}
@@ -17,6 +16,10 @@ class LinearBinning(private val min:Int, private val max:Int, private val n:Int)
         v<min -> 0
         else -> ((v-min)/(max-min)*n).toInt()
     }
+
+    override fun max(): Double = max
+
+    override fun min(): Double = min
 
     override fun bin(v: Double): Int= if(pad) binPad(v) else binNoPad(v)
 
