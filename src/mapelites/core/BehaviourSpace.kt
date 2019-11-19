@@ -29,6 +29,10 @@ class BehaviourSpace(cbins:Array<Binning>){
         minFitness=Double.MAX_VALUE
     }
 
+    fun getSpace():Map<CHIntArray,BehaviourSpacePoint>{
+        return space
+    }
+
     fun getSolution(features:DoubleArray):BehaviourSpacePoint?{
         return space[bin(features)]
     }
