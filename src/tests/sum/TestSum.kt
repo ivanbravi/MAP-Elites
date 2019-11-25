@@ -18,7 +18,7 @@ class TestSum {
             val s = Search(
                 SumSpace(5, max),
                 SumFitnessTrap(max),
-                BehaviourSpace(arrayOf(LinearBinning(0.0, max.toDouble(), 5), LinearBinning(0.0, max.toDouble(), 30))),
+                BehaviourSpace(arrayOf(LinearBinning(0.0, max.toDouble(), 15), LinearBinning(0.0, max.toDouble(), 30))),
                 SumBehaviours(max)
             )
 
@@ -29,7 +29,7 @@ class TestSum {
 
             val adapter = MapEliteUISource(1, 0, s.bs)
             val graph = UI.sourcedGraph(0, 0, adapter.width(), adapter.height(), adapter)
-            graph.alignCenter()
+            graph.alignOrigin()
             val summaryRect = UI.rect(0, adapter.height()+7,50,20, "")
             val summary = SummariseSearch(SimpleSummary())
             RectSourced.defaultSymbol = " "

@@ -1,13 +1,13 @@
 package mapelites.core.binning
 
-class CustomBinning (private val limits:DoubleArray):Binning{
+open class CustomBinning (private val limits:DoubleArray):Binning{
     override fun bin(v: Double): Int {
         if(v<limits.first())
-            return 0;
+            return 0
 
-        for(i in 0 until limits.size)
+        for(i in 0 until limits.size-1)
             if(v>=limits[i] && v<limits[i+1])
-                return i
+                return i+1
 
         return limits.size
     }
