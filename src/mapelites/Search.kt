@@ -1,6 +1,8 @@
 package mapelites
 
 import mapelites.core.BehaviourSpace
+import mapelites.core.BehaviourSpacePoint
+import mapelites.core.TimedBehaviourSpacePoint
 import mapelites.core.selection.RandomSelection
 import mapelites.interfaces.*
 
@@ -15,6 +17,7 @@ class Search(private val ss: SolutionSpace,
         private set
     var bootIterations:Int=0
         private set
+    var solutionHistory:MutableList<BehaviourSpacePoint> = mutableListOf()
 
     var selection:SelectionStrategy = RandomSelection()
 
@@ -44,20 +47,26 @@ class Search(private val ss: SolutionSpace,
         var current:Solution
         val loopsLeft = if(steps>(iterations-iteration)) iterations-iteration else steps
 
-        for (iteration in 0 until loopsLeft){
+        for (i in 0 until loopsLeft){
             current = if(bootIsOver()) ss.mutate(selection.selection(bs)) else ss.rndPoint()
 
             val f = ff.evaluate(current)
             val b = bf.evaluate(current)
 
             if(!bs.isEmpty(b)) {
-                if (bs.getSolution(b)!!.fitness > f)
-                    bs.add(current, f, b);
+                if (bs.getSolution(b)!!.fitness > f) {
+                    saveNewPoint(current, f, b);
+                }
             }else {
-                bs.add(current, f, b)
+                saveNewPoint(current, f, b)
             }
+            iteration += 1
         }
-        iteration += loopsLeft
+    }
+
+    private fun saveNewPoint(x:Solution, f:Double, b:DoubleArray){
+        solutionHistory.add(TimedBehaviourSpacePoint(iteration,x,f,b))
+        bs.add(x,f,b)
     }
 
     fun search(iterations:Int, bootIterations:Int){

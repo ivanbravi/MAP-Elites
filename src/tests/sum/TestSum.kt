@@ -42,6 +42,8 @@ class TestSum {
                 UI.draw()
             }
 
+            print(s.solutionHistory)
+
         }
     }
 }
