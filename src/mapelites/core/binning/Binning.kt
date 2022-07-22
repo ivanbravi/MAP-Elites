@@ -5,4 +5,5 @@ interface Binning {
     fun binCount():Int
     fun min():Double
     fun max():Double
+    fun marker(position:Int):Double
 }

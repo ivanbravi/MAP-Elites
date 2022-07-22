@@ -19,5 +19,12 @@ open class CustomBinning (private val limits:DoubleArray):Binning{
     override fun min(): Double = limits.first()
 
     override fun max(): Double = limits.last()
+    override fun marker(position: Int): Double{
+        if(position<0)
+            return Double.NEGATIVE_INFINITY
+        else if (position>= limits.size)
+            return Double.POSITIVE_INFINITY
+        return limits[position]
+    }
 
 }
